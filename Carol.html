@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flores para Carol 🌷</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        min-height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Georgia', serif;
+        background: linear-gradient(
+            135deg,
+            #160d2b,
+            #45204d,
+            #a44770
+        );
+        color: white;
+    }
+
+    .contenido {
+        text-align: center;
+        z-index: 2;
+        padding: 25px;
+        animation: aparecer 2s ease;
+    }
+
+    h1 {
+        font-size: clamp(3rem, 10vw, 6rem);
+        color: #ffd5e5;
+        text-shadow: 0 0 15px #ff8ab8,
+                     0 0 35px #ff5fa2;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 1.2rem;
+        color: #ffe5ef;
+        letter-spacing: 2px;
+    }
+
+    .flores {
+        font-size: clamp(2rem, 6vw, 4rem);
+        margin-bottom: 20px;
+        animation: flotar 3s ease-in-out infinite;
+    }
+
+    .flor {
+        position: absolute;
+        bottom: -80px;
+        font-size: 30px;
+        animation: subir linear infinite;
+        opacity: 0.8;
+        pointer-events: none;
+    }
+
+    @keyframes subir {
+        0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+        15% {
+            opacity: 0.9;
+        }
+        100% {
+            transform: translateY(-120vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    @keyframes flotar {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-12px); }
+    }
+
+    @keyframes aparecer {
+        from {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .brillo {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #fff1b8;
+        box-shadow: 0 0 12px #fff1b8;
+        animation: destello 2s infinite alternate;
+    }
+
+    @keyframes destello {
+        from { opacity: 0.2; transform: scale(0.7); }
+        to { opacity: 1; transform: scale(1.5); }
+    }
+
+    .corazon {
+        color: #ffb8d2;
+        font-size: 1.5rem;
+        margin-top: 20px;
+        animation: latir 1.5s infinite;
+    }
+
+    @keyframes latir {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="contenido">
+    <div class="flores">🌷 🌸 🌷</div>
+    <h1>Carol</h1>
+    <p>Unas flores para alguien especial</p>
+    <div class="corazon">♡</div>
+</div>
+
+<script>
+    const emojis = ["🌸", "🌷", "🌹", "🌺", "💮"];
+
+    for (let i = 0; i < 28; i++) {
+        const flor = document.createElement("div");
+        flor.className = "flor";
+        flor.textContent = emojis[
+            Math.floor(Math.random() * emojis.length)
+        ];
+
+        flor.style.left = Math.random() * 100 + "vw";
+        flor.style.animationDuration = (6 + Math.random() * 10) + "s";
+        flor.style.animationDelay = (Math.random() * 10) + "s";
+        flor.style.fontSize = (20 + Math.random() * 25) + "px";
+
+        document.body.appendChild(flor);
+    }
+
+    for (let i = 0; i < 35; i++) {
+        const brillo = document.createElement("div");
+        brillo.className = "brillo";
+        brillo.style.left = Math.random() * 100 + "vw";
+        brillo.style.top = Math.random() * 100 + "vh";
+        brillo.style.animationDelay = Math.random() * 3 + "s";
+
+        document.body.appendChild(brillo);
+    }
+</script>
+
+</body>
+</html>
