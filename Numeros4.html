@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ordenar números</title>
+</head>
+<body>
+  <h1>Ordenar números</h1>
+  <label for="numeros">Escribe números separados por comas:</label>
+  <input id="numeros" placeholder="8, 3, 12, 1">
+  <button onclick="ordenarNumeros()">Ordenar</button>
+  <p id="resultado"></p>
+
+  <script>
+    function ordenarNumeros() {
+      const numeros = document.getElementById("numeros").value
+        .split(",")
+        .map(valor => Number(valor.trim()));
+
+      if (numeros.some(numero => !Number.isFinite(numero))) {
+        document.getElementById("resultado").textContent =
+          "Escribe solo números separados por comas.";
+        return;
+      }
+
+      numeros.sort((a, b) => a - b);
+      document.getElementById("resultado").textContent =
+        "Ordenados: " + numeros.join(", ");
+    }
+  </script>
+</body>
+</html>
